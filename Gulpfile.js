@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 
-const babel = require('gulp-babel')
-const browserify = require('browserify')
-const gulp = require('gulp')
-const rename = require('gulp-rename')
-const source = require('vinyl-source-stream')
-const uglify = require('gulp-uglify')
+const babel = require('gulp-babel');
+const browserify = require('browserify');
+const gulp = require('gulp');
+const rename = require('gulp-rename');
+const source = require('vinyl-source-stream');
+const uglify = require('gulp-uglify');
 
 /**
  * Prepares the files for browser usage
@@ -21,12 +21,12 @@ gulp.task('build', [ 'bundle' ], function () {
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./dist'))
-})
+});
 
 gulp.task('bundle', function () {
-  let b = browserify({ entries: './libs/Graph.js' })
+  let b = browserify({ entries: './libs/Graph.js', standalone: 'dijkstra'});
 
   return b.bundle()
     .pipe(source('dijkstra.js'))
     .pipe(gulp.dest('./dist'))
-})
+});
