@@ -14,7 +14,7 @@ function validateNode (cost) {
     throw new TypeError(`Cost must be a number, istead got ${cost}`)
   }
 
-  if (cost <= 0) {
+  if (cost < 0) {
     throw new TypeError(`The cost must be a number above 0, instead got ${cost}`)
   }
 
